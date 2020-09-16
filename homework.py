@@ -104,5 +104,5 @@ def main():
 if __name__ == "__main__":
     try:
         main()
-    except KeyboardInterrupt:
-        print("Ок, досвидули!")
+    except KeyboardInterrupt as e:
+        logging.error(f"You went out!{e}")
