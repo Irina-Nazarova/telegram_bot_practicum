@@ -3,3 +3,8 @@
 2020-09-14 19:24:10,980 - ERROR - homework.py - API Yandex Practice token authentication filed.
 2020-09-16 10:34:09,087 - ERROR - homework.py - API Yandex Practice token authentication filed.
 2020-09-16 11:12:08,906 - ERROR - homework.py - You went out!
+2020-09-16 11:23:15,499 - ERROR - homework.py - You went out!
+2020-09-16 11:37:17,088 - ERROR - homework.py - You went out!
+2020-09-16 11:43:47,591 - ERROR - homework.py - Error: Expecting value: line 1 column 1 (char 0)
+2020-09-16 11:43:47,592 - ERROR - homework.py - Bot crashed with an error: 'NoneType' object has no attribute 'get'
+2020-09-16 11:43:48,220 - ERROR - homework.py - You went out!

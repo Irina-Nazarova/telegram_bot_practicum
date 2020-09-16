@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 logging.basicConfig(
-    filename="app.log",
+    filename="error.log",
     filemode="a",
     format="%(asctime)s - %(levelname)s - %(filename)s - %(message)s",
 )
@@ -31,8 +31,8 @@ def parse_homework_status(homework):
     'lesson_name': 'Отправка SMS-уведомлений'}
     """
     if ("status") not in homework:
-        logging.error("Внешний сервис сейчас недоступен")
-        return f"Внешний сервис сейчас недоступен"
+        logging.error("External service is currently unavailable")
+        return f"External service is currently unavailable"
     verdicts = {
         "rejected": "К сожалению в работе нашлись ошибки.",
         "approved": "Ревьюеру всё понравилось, можно приступать к следующему уроку.",
@@ -48,8 +48,8 @@ def parse_homework_status(homework):
             f'У вас проверили работу "{homework_name}"'
             + verdicts[homework.get("status")]
         )
-    logging.error("Возникла ошибка с получением данных о статусе работы")
-    return f"Возникла ошибка с получением данных о статусе работы"
+    logging.error("Status data error")
+    return f"Status data error"
 
 
 def get_homework_statuses(current_timestamp):
@@ -57,7 +57,7 @@ def get_homework_statuses(current_timestamp):
     Обращается к API Яндекс Практикум и получает статус домашней работы.
     """
     if current_timestamp is None:
-        logging.error("Возникла ошибка с форматом даты")
+        logging.error("Error date format")
         return {}
     params = {"from_date": current_timestamp}
     headers = {"Authorization": f"OAuth {PRACTICUM_TOKEN}"}
@@ -65,7 +65,9 @@ def get_homework_statuses(current_timestamp):
         homework_statuses = requests.get(URL, headers=headers, params=params)
         return homework_statuses.json()
     except requests.exceptions.RequestException as e:
-        logging.error(f"Ошибка соединения: {e}")
+        logging.error(f"Connection error: {e}")
+    except Exception as e:
+        logging.error(f"Error: {e}"), 400
 
 
 def send_message(message):
@@ -96,7 +98,7 @@ def main():
             time.sleep(1200)  # опрашивать раз в 20 минут
 
         except Exception as e:
-            logging.error(f"Бот упал с ошибкой: {e}")
+            logging.error(f"Bot crashed with an error: {e}")
             time.sleep(5)
             continue
 
