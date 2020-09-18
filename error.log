@@ -8,3 +8,17 @@
 2020-09-16 11:43:47,591 - ERROR - homework.py - Error: Expecting value: line 1 column 1 (char 0)
 2020-09-16 11:43:47,592 - ERROR - homework.py - Bot crashed with an error: 'NoneType' object has no attribute 'get'
 2020-09-16 11:43:48,220 - ERROR - homework.py - You went out!
+2020-09-16 12:15:25,538 - ERROR - homework.py - Error: 
+2020-09-16 12:15:25,539 - ERROR - homework.py - Bot crashed with an error: 'NoneType' object has no attribute 'get'
+2020-09-16 12:15:25,987 - ERROR - homework.py - You went out!
+2020-09-18 10:36:44,143 - ERROR - homework.py - You went out!
+2020-09-18 10:50:30,536 - ERROR - homework.py - You went out!
+2020-09-18 10:57:06,604 - ERROR - homework.py - You went out!
+2020-09-18 10:58:45,018 - ERROR - homework.py - You went out!
+2020-09-18 11:05:21,589 - ERROR - homework.py - You went out!
+2020-09-18 11:08:06,318 - ERROR - homework.py - You went out!
+2020-09-18 11:11:16,875 - ERROR - homework.py - You went out!
+2020-09-18 11:42:21,629 - ERROR - homework.py - You went out!
+2020-09-18 11:45:18,220 - ERROR - homework.py - You went out!
+2020-09-18 13:43:04,147 - ERROR - homework.py - You went out!
+2020-09-18 14:36:36,462 - ERROR - homework.py - You went out!

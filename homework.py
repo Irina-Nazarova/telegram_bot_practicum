@@ -17,7 +17,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 URL = "https://praktikum.yandex.ru/api/user_api/homework_statuses/"
-BOT = telegram.Bot(token=TELEGRAM_TOKEN)
+bot = telegram.Bot(token=TELEGRAM_TOKEN)
 
 
 def parse_homework_status(homework):
@@ -56,9 +56,6 @@ def get_homework_statuses(current_timestamp):
     """
     Обращается к API Яндекс Практикум и получает статус домашней работы.
     """
-    if current_timestamp is None:
-        logging.error("Error date format")
-        return {}
     params = {"from_date": current_timestamp}
     headers = {"Authorization": f"OAuth {PRACTICUM_TOKEN}"}
     try:
@@ -74,11 +71,11 @@ def send_message(message):
     """
     Обращается к API Telegram и отправляет сообщение боту.
     """
-    return BOT.send_message(chat_id=CHAT_ID, text=message)
+    return bot.send_message(chat_id=CHAT_ID, text=message)
 
 
 def main():
-    current_timestamp = int(time.time())  # начальное значение timestamp
+    current_timestamp = int(time.time())
     while True:
         try:
             new_homework = get_homework_statuses(current_timestamp)
@@ -91,9 +88,10 @@ def main():
                 send_message(
                     parse_homework_status(new_homework.get("homeworks")[0])
                 )
-            current_timestamp = new_homework.get(
-                "current_date"
-            )  # обновить timestamp
+            # Что если сервер вернул что либо отличное в словаре new_homework по ключу current_date?
+            current_timestamp = new_homework.get("current_date")
+            if current_timestamp is None:
+                current_timestamp = int(time.time())
 
             time.sleep(1200)  # опрашивать раз в 20 минут
 
