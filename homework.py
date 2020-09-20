@@ -30,26 +30,20 @@ def parse_homework_status(homework):
     'date_updated': '2020-09-09T18:35:16Z',
     'lesson_name': 'Отправка SMS-уведомлений'}
     """
-    if ("status") not in homework:
-        logging.error("External service is currently unavailable")
-        return f"External service is currently unavailable"
     verdicts = {
         "rejected": "К сожалению в работе нашлись ошибки.",
         "approved": "Ревьюеру всё понравилось, можно приступать к следующему уроку.",
     }
     homework_name = homework.get("homework_name")
-    if homework.get("status") == "rejected":
-        return (
-            f'У вас проверили работу "{homework_name}"'
-            + verdicts[homework.get("status")]
-        )
-    elif homework.get("status") == "approved":
-        return (
-            f'У вас проверили работу "{homework_name}"'
-            + verdicts[homework.get("status")]
-        )
-    logging.error("Status data error")
-    return f"Status data error"
+
+    if "status" not in homework.key():
+        logging.error("External service is currently unavailable")
+        return f"External service is currently unavailable"
+
+    if homework.get("status") not in verdicts.keys():
+        return 'Внешний сервис ответил невразумительно'
+
+    return f'У вас проверили работу "{homework_name}": {verdicts[homework.get("status")]}'
 
 
 def get_homework_statuses(current_timestamp):
