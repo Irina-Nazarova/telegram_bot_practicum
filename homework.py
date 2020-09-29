@@ -36,7 +36,7 @@ def parse_homework_status(homework):
     }
     homework_name = homework.get("homework_name")
 
-    if "status" not in homework.key():
+    if "status" not in homework.keys():
         logging.error("External service is currently unavailable")
         return f"External service is currently unavailable"
 
@@ -73,6 +73,7 @@ def main():
     while True:
         try:
             new_homework = get_homework_statuses(current_timestamp)
+            print(new_homework)
             # Пользователь авторизован или нет
             if new_homework.get("code") == "not_authenticated":
                 logging.error(
