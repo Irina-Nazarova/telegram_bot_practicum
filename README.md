@@ -1,2 +1,2 @@
-# api_sp1_bot
-api sp1 bot
+
+My telegram bot for checking the homework status in Yandex.Practicum
