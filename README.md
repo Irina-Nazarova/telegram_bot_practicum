@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Telegram-бот
 Обращаясь к API Яндекс.Практикума бот присылает сообщения при изменении статуса домашнего задания.
 
@@ -28,3 +29,7 @@
 6. Запустить бота
 
 ```python homework.py```
+=======
+
+My telegram bot for checking the homework status in Yandex.Practicum
+>>>>>>> e5772360b4fcc397506ae344bf60d70a9a6777ce
