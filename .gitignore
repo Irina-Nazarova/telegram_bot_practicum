@@ -22,3 +22,5 @@ media/
 
 db.sqlite3
 .env
+
+error.log
